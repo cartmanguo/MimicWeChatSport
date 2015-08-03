@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25D1325E1B6F4D3C00810132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1325D1B6F4D3C00810132 /* AppDelegate.swift */; };
+		25D132601B6F4D3C00810132 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D1325F1B6F4D3C00810132 /* ViewController.swift */; };
+		25D132631B6F4D3C00810132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D132611B6F4D3C00810132 /* Main.storyboard */; };
+		25D132651B6F4D3C00810132 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D132641B6F4D3C00810132 /* Images.xcassets */; };
+		25D132681B6F4D3C00810132 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D132661B6F4D3C00810132 /* LaunchScreen.xib */; };
+		25D132741B6F4D3C00810132 /* MimicWeixinSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D132731B6F4D3C00810132 /* MimicWeixinSportTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25D1326E1B6F4D3C00810132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D132501B6F4D3C00810132 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25D132571B6F4D3C00810132;
+			remoteInfo = MimicWeixinSport;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25D132581B6F4D3C00810132 /* MimicWeixinSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MimicWeixinSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25D1325C1B6F4D3C00810132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25D1325D1B6F4D3C00810132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		25D1325F1B6F4D3C00810132 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25D132621B6F4D3C00810132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		25D132641B6F4D3C00810132 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		25D132671B6F4D3C00810132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		25D1326D1B6F4D3C00810132 /* MimicWeixinSportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MimicWeixinSportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25D132721B6F4D3C00810132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25D132731B6F4D3C00810132 /* MimicWeixinSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimicWeixinSportTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25D132551B6F4D3C00810132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25D1326A1B6F4D3C00810132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25D1324F1B6F4D3C00810132 = {
+			isa = PBXGroup;
+			children = (
+				25D1325A1B6F4D3C00810132 /* MimicWeixinSport */,
+				25D132701B6F4D3C00810132 /* MimicWeixinSportTests */,
+				25D132591B6F4D3C00810132 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25D132591B6F4D3C00810132 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25D132581B6F4D3C00810132 /* MimicWeixinSport.app */,
+				25D1326D1B6F4D3C00810132 /* MimicWeixinSportTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25D1325A1B6F4D3C00810132 /* MimicWeixinSport */ = {
+			isa = PBXGroup;
+			children = (
+				25D1325D1B6F4D3C00810132 /* AppDelegate.swift */,
+				25D1325F1B6F4D3C00810132 /* ViewController.swift */,
+				25D132611B6F4D3C00810132 /* Main.storyboard */,
+				25D132641B6F4D3C00810132 /* Images.xcassets */,
+				25D132661B6F4D3C00810132 /* LaunchScreen.xib */,
+				25D1325B1B6F4D3C00810132 /* Supporting Files */,
+			);
+			path = MimicWeixinSport;
+			sourceTree = "<group>";
+		};
+		25D1325B1B6F4D3C00810132 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25D1325C1B6F4D3C00810132 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25D132701B6F4D3C00810132 /* MimicWeixinSportTests */ = {
+			isa = PBXGroup;
+			children = (
+				25D132731B6F4D3C00810132 /* MimicWeixinSportTests.swift */,
+				25D132711B6F4D3C00810132 /* Supporting Files */,
+			);
+			path = MimicWeixinSportTests;
+			sourceTree = "<group>";
+		};
+		25D132711B6F4D3C00810132 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25D132721B6F4D3C00810132 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25D132571B6F4D3C00810132 /* MimicWeixinSport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25D132771B6F4D3C00810132 /* Build configuration list for PBXNativeTarget "MimicWeixinSport" */;
+			buildPhases = (
+				25D132541B6F4D3C00810132 /* Sources */,
+				25D132551B6F4D3C00810132 /* Frameworks */,
+				25D132561B6F4D3C00810132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MimicWeixinSport;
+			productName = MimicWeixinSport;
+			productReference = 25D132581B6F4D3C00810132 /* MimicWeixinSport.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25D1326C1B6F4D3C00810132 /* MimicWeixinSportTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25D1327A1B6F4D3C00810132 /* Build configuration list for PBXNativeTarget "MimicWeixinSportTests" */;
+			buildPhases = (
+				25D132691B6F4D3C00810132 /* Sources */,
+				25D1326A1B6F4D3C00810132 /* Frameworks */,
+				25D1326B1B6F4D3C00810132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25D1326F1B6F4D3C00810132 /* PBXTargetDependency */,
+			);
+			name = MimicWeixinSportTests;
+			productName = MimicWeixinSportTests;
+			productReference = 25D1326D1B6F4D3C00810132 /* MimicWeixinSportTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25D132501B6F4D3C00810132 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = randy;
+				TargetAttributes = {
+					25D132571B6F4D3C00810132 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					25D1326C1B6F4D3C00810132 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 25D132571B6F4D3C00810132;
+					};
+				};
+			};
+			buildConfigurationList = 25D132531B6F4D3C00810132 /* Build configuration list for PBXProject "MimicWeixinSport" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25D1324F1B6F4D3C00810132;
+			productRefGroup = 25D132591B6F4D3C00810132 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25D132571B6F4D3C00810132 /* MimicWeixinSport */,
+				25D1326C1B6F4D3C00810132 /* MimicWeixinSportTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25D132561B6F4D3C00810132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D132631B6F4D3C00810132 /* Main.storyboard in Resources */,
+				25D132681B6F4D3C00810132 /* LaunchScreen.xib in Resources */,
+				25D132651B6F4D3C00810132 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25D1326B1B6F4D3C00810132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25D132541B6F4D3C00810132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D132601B6F4D3C00810132 /* ViewController.swift in Sources */,
+				25D1325E1B6F4D3C00810132 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25D132691B6F4D3C00810132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D132741B6F4D3C00810132 /* MimicWeixinSportTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25D1326F1B6F4D3C00810132 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25D132571B6F4D3C00810132 /* MimicWeixinSport */;
+			targetProxy = 25D1326E1B6F4D3C00810132 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		25D132611B6F4D3C00810132 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25D132621B6F4D3C00810132 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		25D132661B6F4D3C00810132 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25D132671B6F4D3C00810132 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25D132751B6F4D3C00810132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		25D132761B6F4D3C00810132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25D132781B6F4D3C00810132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MimicWeixinSport/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		25D132791B6F4D3C00810132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MimicWeixinSport/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		25D1327B1B6F4D3C00810132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MimicWeixinSportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MimicWeixinSport.app/MimicWeixinSport";
+			};
+			name = Debug;
+		};
+		25D1327C1B6F4D3C00810132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MimicWeixinSportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MimicWeixinSport.app/MimicWeixinSport";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25D132531B6F4D3C00810132 /* Build configuration list for PBXProject "MimicWeixinSport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25D132751B6F4D3C00810132 /* Debug */,
+				25D132761B6F4D3C00810132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25D132771B6F4D3C00810132 /* Build configuration list for PBXNativeTarget "MimicWeixinSport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25D132781B6F4D3C00810132 /* Debug */,
+				25D132791B6F4D3C00810132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		25D1327A1B6F4D3C00810132 /* Build configuration list for PBXNativeTarget "MimicWeixinSportTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25D1327B1B6F4D3C00810132 /* Debug */,
+				25D1327C1B6F4D3C00810132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25D132501B6F4D3C00810132 /* Project object */;
+}
