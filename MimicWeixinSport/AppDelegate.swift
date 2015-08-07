@@ -12,11 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.statusBarStyle = UIStatusBarStyle.LightContent
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().barTintColor = UIColor(red: 6/255, green: 6/255, blue: 6/255, alpha: 1.0)
         // Override point for customization after application launch.
         return true
     }

@@ -8,17 +8,21 @@
 
 import UIKit
 
-class SportViewController : UIViewController,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate {
+class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionSheetDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     var friendsRankContainer: UIView!
     var numberOfData:Int = 9
-    let cellHeight:CGFloat = 60
+    let cellHeight:CGFloat = 65
     var threshold:CGFloat?
     var userDatas:[UserData]?
     @IBOutlet weak var championView: UIView!
     @IBOutlet weak var championNameLabel: UILabel!
+    @IBOutlet weak var bgImgView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: "showActionSheet:")
+        tap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(tap)
         let userData1 = UserData(name: "Alan", steps: 7894)
         let userData2 = UserData(name: "Jim", steps: 1234)
         let userData3 = UserData(name: "Steve", steps: 2546)
@@ -49,7 +53,7 @@ class SportViewController : UIViewController,UITableViewDataSource,UITableViewDe
             scrollView.contentSize = CGSizeMake(view.frame.size.width, view.frame.size.height + abs(friendsRankContainer.frame.origin.y + friendsRankContainer.frame.size.height - view.frame.size.height))
         }
         threshold = friendsRankContainer.frame.origin.y - 64
-        for var i = 0;i<numberOfData;i++
+        for i in 0 ..< numberOfData
         {
             let tapGesture = UITapGestureRecognizer(target: self, action: "toPersonDetail:")
             tapGesture.numberOfTapsRequired = 1
@@ -61,13 +65,13 @@ class SportViewController : UIViewController,UITableViewDataSource,UITableViewDe
             friendView.numOfStepsLabel.text = String(format: "%d", data.steps!)
             friendView.progressBar.progress = Float(data.steps!)/10000.0
             friendView.setColor(data)
-            friendView.layer.borderWidth = 0.3
-            friendView.layer.borderColor = UIColor.lightGrayColor().CGColor
             let frame = CGRectMake(-1, cellHeight*CGFloat(i)-1, friendsRankContainer.frame.size.width+2, cellHeight)
-            let fd = friendView
-            fd.rankLabel.text = String(format: "%d", i+1)
-            fd.frame = frame
-            friendsRankContainer.addSubview(fd)
+            friendView.rankLabel.text = String(format: "%d", i+1)
+            friendView.frame = frame
+            friendsRankContainer.addSubview(friendView)
+            let separatorLine = UIView(frame: CGRectMake(0, 0, friendView.frame.size.width, 0.5))
+            separatorLine.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
+            friendView.addSubview(separatorLine)
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -82,23 +86,6 @@ class SportViewController : UIViewController,UITableViewDataSource,UITableViewDe
     }
     @IBAction func reset(sender: AnyObject) {
         
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
-        cell.textLabel!.text = "Cartman"
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -117,6 +104,24 @@ class SportViewController : UIViewController,UITableViewDataSource,UITableViewDe
         }        
     }
     
+   func showActionSheet(sender: AnyObject) {
+    let mimicAS = MimicActionSheet(actionSheetDelegate: self, title:"更换背景图片", cancelButtonTitle: nil, otherButtonTitles: "拍一张","从手机相册选择")
+        mimicAS.show()
+    }
+    
+    func didClickButtonAtIndex(index: Int,actionSheet:MimicActionSheet) {
+        if index == 0
+        {
+            println("Camera")
+        }
+        else
+        {
+            let albumsVC = AlbumsTableViewController()
+            let customNav = MyNavigationController(rootViewController: albumsVC)
+            presentViewController(customNav, animated: true, completion: nil)
+        }
+        actionSheet.dismiss()
+    }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }

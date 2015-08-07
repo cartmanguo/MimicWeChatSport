@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class PersonDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var userData:UserData?
