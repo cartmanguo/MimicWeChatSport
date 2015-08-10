@@ -14,10 +14,13 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet weak var height2: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var bgImageView: UIImageView!
+    var bgImage:UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
+        bgImageView.image = bgImage
         //scrollView.contentSize = CGSizeMake(view.frame.size.width,view.frame.size.height + 200)
-        println("\(userData?.name)")
+        //println("\(userData?.name)")
         height.constant = view.frame.size.height-50
         containerView.layoutIfNeeded()
         //heightConstaint.active = true

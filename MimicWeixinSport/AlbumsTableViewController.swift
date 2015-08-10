@@ -94,6 +94,16 @@ class AlbumsTableViewController: UITableViewController {
         cell!.imageView?.image = UIImage(CGImage: assetGroup.posterImage().takeUnretainedValue())
         return cell!
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let assetsGroup = albums[indexPath.row]
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 2.0;
+        flowLayout.minimumInteritemSpacing = 2.0;
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
+        let photosViewController = PhotosCollectionViewController(collectionViewLayout: flowLayout, assetsGroup: assetsGroup)
+        self.navigationController?.pushViewController(photosViewController, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

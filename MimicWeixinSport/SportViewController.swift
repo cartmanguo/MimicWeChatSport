@@ -20,6 +20,7 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
     @IBOutlet weak var bgImgView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setBackgroundImage:", name: "SetImageNoti", object: nil)
         let tap = UITapGestureRecognizer(target: self, action: "showActionSheet:")
         tap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(tap)
@@ -76,12 +77,22 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func setBackgroundImage(notification:NSNotification)
+    {
+        let image = notification.object as? UIImage
+        if let bgImage = image
+        {
+            self.bgImgView.image = bgImage
+        }
+    }
+    
     func toPersonDetail(tap:UIGestureRecognizer)
     {
         let friendView = tap.view as! FriendView
         let userData = friendView.userData
         let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Person") as! PersonDetailViewController
         detailVC.userData = userData
+        detailVC.bgImage = self.bgImgView.image
         navigationController?.pushViewController(detailVC, animated: true)
     }
     @IBAction func reset(sender: AnyObject) {
