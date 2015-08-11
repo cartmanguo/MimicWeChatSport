@@ -12,7 +12,7 @@ import AssetsLibrary
 class AlbumsTableViewController: UITableViewController {
     var albums:[ALAssetsGroup] = []
     let assetLib = ALAssetsLibrary()
-
+    var allowMultipleSelection:Bool = false
     override func viewDidLoad() {
         //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.tableFooterView = UIView()
@@ -102,6 +102,7 @@ class AlbumsTableViewController: UITableViewController {
         flowLayout.minimumInteritemSpacing = 2.0;
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
         let photosViewController = PhotosCollectionViewController(collectionViewLayout: flowLayout, assetsGroup: assetsGroup)
+        photosViewController.allowMultipleSelection = allowMultipleSelection
         self.navigationController?.pushViewController(photosViewController, animated: true)
     }
 

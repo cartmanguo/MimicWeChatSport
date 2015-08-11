@@ -5,16 +5,25 @@
 //  Created by randy on 15/8/10.
 //  Copyright (c) 2015年 randy. All rights reserved.
 //
-
+protocol CheckmarkPressedDelegate
+{
+    func didSelectAsset(cellForAsset:PhotoCell)
+    func didDeSelectAsset(cellForAsset:PhotoCell)
+}
 import UIKit
 import AssetsLibrary
 class PhotoCell: UICollectionViewCell {
+    var delegate:CheckmarkPressedDelegate?
+    var asset:ALAsset?
+    var isAssetSelected:Bool = false
     var checkmarkButton:UIButton?
     var thumbnailImgView:UIImageView?
     var allowMultibleSelection = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         thumbnailImgView = UIImageView(frame: self.bounds)
+        let multi = NSUserDefaults.standardUserDefaults().boolForKey("multi_key")
+        self.allowMultibleSelection = multi
         self.addSubview(thumbnailImgView!)
         if self.allowMultibleSelection
         {
@@ -26,32 +35,36 @@ class PhotoCell: UICollectionViewCell {
             checkmarkButton?.setTranslatesAutoresizingMaskIntoConstraints(false)
             self.addSubview(checkmarkButton!)
         }
-        
-
     }
     
-    func selectAsset(sender:UIButton)
+    func selectAsset(selected:Bool)
     {
-        if sender.selected
+        if checkmarkButton!.selected
         {
-            sender.selected = false
+            self.delegate?.didDeSelectAsset(self)
         }
         else
         {
-            sender.selected = true
             UIView.animateWithDuration(0.2, animations: {() in
-                sender.transform = CGAffineTransformMakeScale(1.1, 1.1)
+                self.checkmarkButton!.transform = CGAffineTransformMakeScale(1.2, 1.2)
                 }, completion: {(finished) in
                     UIView.animateWithDuration(0.2, animations: {() in
-                        sender.transform = CGAffineTransformIdentity
+                        self.checkmarkButton!.transform = CGAffineTransformIdentity
                     })
             })
+            self.delegate?.didSelectAsset(self)
         }
+    }
+    
+    func setCellSelected(selected:Bool)
+    {
+        checkmarkButton?.selected = selected
     }
     
     func setAssetForCell(asset:ALAsset)
     {
         let thumbnaimImg = asset.thumbnail().takeUnretainedValue()
+        self.asset = asset
         thumbnailImgView?.image = UIImage(CGImage: thumbnaimImg)
     }
     

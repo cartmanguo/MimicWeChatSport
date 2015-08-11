@@ -77,6 +77,16 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func toImageBrowser(sender: AnyObject)
+    {
+        let albumsVC = AlbumsTableViewController()
+        albumsVC.allowMultipleSelection = true
+        let customNav = MyNavigationController(rootViewController: albumsVC)
+        presentViewController(customNav, animated: true, completion: nil)
+        NSUserDefaults.standardUserDefaults().setObject(albumsVC.allowMultipleSelection, forKey: "multi_key")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
     func setBackgroundImage(notification:NSNotification)
     {
         let image = notification.object as? UIImage
@@ -128,6 +138,8 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
         else
         {
             let albumsVC = AlbumsTableViewController()
+            NSUserDefaults.standardUserDefaults().setObject(albumsVC.allowMultipleSelection, forKey: "multi_key")
+            NSUserDefaults.standardUserDefaults().synchronize()
             let customNav = MyNavigationController(rootViewController: albumsVC)
             presentViewController(customNav, animated: true, completion: nil)
         }
