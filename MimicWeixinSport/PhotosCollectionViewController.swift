@@ -9,8 +9,9 @@
 import UIKit
 import AssetsLibrary
 
-class PhotosCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,CheckmarkPressedDelegate {
+class PhotosCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,PhotoBrowserDelegate,CheckmarkPressedDelegate {
     let reuseIdentifier = "Cell"
+    var flowLayout:UICollectionViewFlowLayout!
     var albumsAsset:ALAssetsGroup?
     var allowMultipleSelection:Bool = false
     var assetsArray:[ALAsset] = []
@@ -28,6 +29,10 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
         loadData()
         self.title = albumsAsset?.valueForProperty(ALAssetsGroupPropertyName) as? String
@@ -50,6 +55,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.toolbarHidden = true
     }
     
@@ -64,6 +70,13 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
         self.setToolbarItems([previewBarButton,space,sendBarButton],animated:false)
     }
     
+    func showPreview()
+    {
+        let browseVC = PhotosBrowserViewController(collectionViewLayout: flowLayout, photoAssets: selectedAssets, currentIndex: 0)
+        browseVC.delegate = self
+        self.navigationController?.pushViewController(browseVC, animated: true)
+    }
+    
     func loadData()
     {
         self.albumsAsset?.setAssetsFilter(ALAssetsFilter.allPhotos())
@@ -74,7 +87,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
                     self.assetsArray.insert(photoAsset, atIndex: 0)
                 }
             })
-            println("cnt:\(self.assetsArray.count)")
+            //println("cnt:\(self.assetsArray.count)")
             dispatch_async(dispatch_get_main_queue(), {() in
                 self.collectionView?.reloadData()
             })
@@ -120,7 +133,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
         cell.allowMultibleSelection = allowMultipleSelection
         cell.layoutSubviews()
         let asset = self.assetsArray[indexPath.row]
-        cell.setAssetForCell(asset)
+        cell.setAssetForCell(asset,selected:isAssetSelected(asset))
         // Configure the cell
         return cell
     }
@@ -138,11 +151,9 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
         let originalImage = asset.defaultRepresentation().fullScreenImage().takeUnretainedValue()
         if allowMultipleSelection
         {
-            let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 0
-            flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-            let browseVC = PhotosBrowserViewController(collectionViewLayout: flowLayout, photoAssets:assetsArray)
+            
+            let browseVC = PhotosBrowserViewController(collectionViewLayout: flowLayout, photoAssets:assetsArray,currentIndex:indexPath.row)
+            browseVC.delegate = self
             self.navigationController?.pushViewController(browseVC, animated: true)
         }
         else
@@ -156,58 +167,96 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     
     func isAssetSelected(selectAsset:ALAsset)->Bool
     {
-        if selectedAssets.count == 0
+        if selectedAssets.count > 0
         {
-            selectedAssets.append(selectAsset)
+            for asset in selectedAssets
+            {
+                let urlForAsset = asset.valueForProperty(ALAssetPropertyAssetURL) as! NSURL
+                let urlForSelectAsset = selectAsset.valueForProperty(ALAssetPropertyAssetURL) as! NSURL
+                if urlForAsset.isEqual(urlForSelectAsset)
+                {
+                    return true
+                }
+            }
+
+        }
+        else
+        {
             return false
         }
-        for asset in selectedAssets
-        {
-            let urlForAsset = asset.valueForProperty(ALAssetPropertyAssetURL) as! NSURL
-            let urlForSelectAsset = selectAsset.valueForProperty(ALAssetPropertyAssetURL) as! NSURL
-            if urlForAsset.isEqual(urlForSelectAsset)
-            {
-                return true
-            }
-        }
-        selectedAssets.append(selectAsset)
         return false
     }
     
-    func didSelectAsset(cellForAsset:PhotoCell)
+    func selectAsset(asset:ALAsset)->Bool
     {
+        if isAssetSelected(asset)
+        {
+            return false
+        }
         if selectedAssets.count == 9
         {
             let alertController = UIAlertController(title: "你最多只能选择9张照片", message: "", preferredStyle: .Alert)
             let action = UIAlertAction(title: "分かった", style: UIAlertActionStyle.Default, handler: nil)
             alertController.addAction(action)
             presentViewController(alertController, animated: true, completion: nil)
+            return false
         }
         else
         {
-            cellForAsset.setCellSelected(!isAssetSelected(cellForAsset.asset!))
-            println("cnt:\(selectedAssets.count),\(cellForAsset.asset?.valueForProperty(ALAssetPropertyAssetURL))")
+            selectedAssets.append(asset)
+            let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
+            previewBarButton.enabled = true
             sendButton?.setBadgeNumber(selectedAssets.count)
+            return true
         }
-        let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
-        previewBarButton.enabled = true
-
+        //println("cnt:\(selectedAssets.count),\(cellForAsset.asset?.valueForProperty(ALAssetPropertyAssetURL))")
+    }
+    
+    func deSelectAsset(asset:ALAsset)
+    {
+        if isAssetSelected(asset)
+        {
+            let idx = find(selectedAssets,asset)
+            if let assetIndex = idx
+            {
+                selectedAssets.removeAtIndex(assetIndex)
+                sendButton?.setBadgeNumber(selectedAssets.count)
+                if(selectedAssets.count == 0)
+                {
+                    let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
+                    previewBarButton.enabled = false
+                }
+            }
+        }
+    }
+    
+    func didSelectAsset(cellForAsset:PhotoCell)
+    {
+        cellForAsset.setCellSelected(selectAsset(cellForAsset.asset!))
     }
     
     func didDeSelectAsset(cellForAsset:PhotoCell)
     {
-        let idx = find(selectedAssets, cellForAsset.asset!)
-        if let assetIndex = idx
-        {
-            selectedAssets.removeAtIndex(assetIndex)
-            sendButton?.setBadgeNumber(selectedAssets.count)
-            cellForAsset.setCellSelected(false)
-            println("cnt:\(selectedAssets.count),\(cellForAsset.asset?.valueForProperty(ALAssetPropertyAssetURL))")
-            if(selectedAssets.count == 0)
-            {
-                let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
-                previewBarButton.enabled = false
-            }
-        }
+        deSelectAsset(cellForAsset.asset!)
+        cellForAsset.setCellSelected(false)
+    }
+
+    func seletedPhotosNumberInPhotoBrowser(browser: PhotosBrowserViewController) -> Int {
+        return selectedAssets.count
+    }
+    
+    func isAssetSelectedInBrowser(browser: PhotosBrowserViewController, asset: ALAsset) -> Bool {
+        return isAssetSelected(asset)
+    }
+    
+    func selectAssetInBrowser(browser: PhotosBrowserViewController, asset: ALAsset)->Bool {
+        let selected = selectAsset(asset)
+        collectionView?.reloadData()
+        return selected
+    }
+    
+    func deSelectAssetInBrowser(browser: PhotosBrowserViewController, asset: ALAsset) {
+        deSelectAsset(asset)
+        collectionView?.reloadData()
     }
 }

@@ -61,8 +61,9 @@ class PhotoCell: UICollectionViewCell {
         checkmarkButton?.selected = selected
     }
     
-    func setAssetForCell(asset:ALAsset)
+    func setAssetForCell(asset:ALAsset,selected:Bool)
     {
+        setCellSelected(selected)
         let thumbnaimImg = asset.thumbnail().takeUnretainedValue()
         self.asset = asset
         thumbnailImgView?.image = UIImage(CGImage: thumbnaimImg)

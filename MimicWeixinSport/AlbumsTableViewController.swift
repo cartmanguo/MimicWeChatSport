@@ -30,6 +30,10 @@ class AlbumsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.toolbarHidden = true
+    }
+    
     func close()
     {
         dismissViewControllerAnimated(true, completion: nil)

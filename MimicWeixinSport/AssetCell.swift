@@ -34,7 +34,7 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
         self.scrollView.zoomScale = 1;
         self.scrollView.contentSize = CGSizeMake(0, 0);
         self.asset = asset
-        let image = UIImage(CGImage: asset.defaultRepresentation().fullResolutionImage().takeUnretainedValue())
+        let image = UIImage(CGImage: asset.defaultRepresentation().fullScreenImage().takeUnretainedValue())
         scrollView.contentSize = image!.size
         fullImageView.frame = CGRectMake(0, 0, image!.size.width, image!.size.height)
         fullImageView.image = image

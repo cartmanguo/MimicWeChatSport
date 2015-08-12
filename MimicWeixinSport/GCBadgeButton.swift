@@ -45,6 +45,7 @@ class GCBadgeButton: UIView {
     
     func setBadgeNumber(badgeNum:Int)
     {
+        self.badgeNum = String(format: "%d", badgeNum)
         if badgeNum == 0
         {
             badgeLabel?.hidden = true

@@ -18,7 +18,6 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
     var scrollView:UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(view.frame)")
         self.automaticallyAdjustsScrollViewInsets = false
         scrollView = UIScrollView(frame: view.frame)
         scrollView.delegate = self
@@ -137,8 +136,9 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
+        //view.setNeedsLayout()
+        //view.layoutIfNeeded()
+        centerImageView()
     }
     
     func centerImageView()
