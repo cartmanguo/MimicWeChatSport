@@ -10,16 +10,16 @@ import UIKit
 class MyNavigationController:UINavigationController,UIGestureRecognizerDelegate
 {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return self.topViewController.preferredStatusBarStyle()
+        return self.topViewController!.preferredStatusBarStyle()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let target = self.interactivePopGestureRecognizer.delegate
+        let target = self.interactivePopGestureRecognizer!.delegate
         let pan = UIPanGestureRecognizer(target: target!, action: "handleNavigationTransition:")
         pan.delegate = self
         view.addGestureRecognizer(pan)
-        self.interactivePopGestureRecognizer.enabled = false
+        self.interactivePopGestureRecognizer!.enabled = false
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {

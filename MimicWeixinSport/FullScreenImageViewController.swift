@@ -61,13 +61,13 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
         imageView.frame = CGRectMake(0, 0, imageView.frame.size.width,imageView.frame.size.height);
         
         // Sizes
-        var boundsSize = self.scrollView.bounds.size;
-        var imageSize = imageView.image?.size
+        let boundsSize = self.scrollView.bounds.size;
+        let imageSize = imageView.image?.size
         
         // Calculate Min
-        var xScale = boundsSize.width / imageSize!.width
+        let xScale = boundsSize.width / imageSize!.width
         // the scale needed to perfectly fit the image width-wise
-        var yScale = boundsSize.height / imageSize!.height
+        let yScale = boundsSize.height / imageSize!.height
         // the scale needed to perfectly fit the image height-wise
         var minScale = min(xScale, yScale)
         // use minimum of these to allow the image to become fully visible
@@ -108,14 +108,14 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
     {
         var zoomScale = self.scrollView.minimumZoomScale;
         // Zoom image to fill if the aspect ratios are fairly similar
-        var boundsSize = self.scrollView.bounds.size;
-        var imageSize = self.imageView.image!.size;
-        var boundsAR = boundsSize.width / boundsSize.height
+        let boundsSize = self.scrollView.bounds.size;
+        let imageSize = self.imageView.image!.size;
+        let boundsAR = boundsSize.width / boundsSize.height
         
-        var imageAR = imageSize.width / imageSize.height;
-        var xScale = boundsSize.width / imageSize.width;
+        let imageAR = imageSize.width / imageSize.height;
+        let xScale = boundsSize.width / imageSize.width;
         // the scale needed to perfectly fit the image width-wise
-        var yScale = boundsSize.height / imageSize.height;
+        let yScale = boundsSize.height / imageSize.height;
         // the scale needed to perfectly fit the image height-wise
         // Zooms standard portrait images on a 3.5in screen but not on a 4in screen.
         if (abs(boundsAR - imageAR) < 0.17) {
@@ -131,7 +131,7 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
         return imageView
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         scrollView.scrollEnabled = true
     }
     
@@ -143,7 +143,7 @@ class FullScreenImageViewController: UIViewController,UIScrollViewDelegate {
     
     func centerImageView()
     {
-        var boundsSize = self.scrollView.bounds.size
+        let boundsSize = self.scrollView.bounds.size
         var frameToCenter = imageView.frame
 
         // Horizontally

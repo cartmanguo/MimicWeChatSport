@@ -20,7 +20,7 @@ class FriendView: UIView {
     @IBOutlet weak var progressBar: UIProgressView!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override init(frame: CGRect) {

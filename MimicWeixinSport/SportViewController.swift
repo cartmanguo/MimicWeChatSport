@@ -34,7 +34,7 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
         let userData8 = UserData(name: "Dean", steps: 8888)
         let userData9 = UserData(name: "Cartman", steps: 999999)
         userDatas = [userData1,userData2,userData3,userData4,userData5,userData6,userData7,userData8,userData9]
-        userDatas?.sort({(s1:UserData,s2:UserData)->Bool in
+        userDatas?.sortInPlace({(s1:UserData,s2:UserData)->Bool in
             return s1.steps > s2.steps
         })
         let champ = userDatas![0] as UserData
@@ -133,7 +133,7 @@ class SportViewController : UIViewController,UIScrollViewDelegate,MimicActionShe
     func didClickButtonAtIndex(index: Int,actionSheet:MimicActionSheet) {
         if index == 0
         {
-            println("Camera")
+            print("Camera")
         }
         else
         {

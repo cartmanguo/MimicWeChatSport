@@ -24,7 +24,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override func viewDidLoad() {
@@ -128,7 +128,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoCell
         cell.delegate = self
         cell.allowMultibleSelection = allowMultipleSelection
         cell.layoutSubviews()
@@ -204,7 +204,7 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
         else
         {
             selectedAssets.append(asset)
-            let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
+            let previewBarButton = self.toolbarItems![0]
             previewBarButton.enabled = true
             sendButton?.setBadgeNumber(selectedAssets.count)
             return true
@@ -216,14 +216,14 @@ class PhotosCollectionViewController: UICollectionViewController,UICollectionVie
     {
         if isAssetSelected(asset)
         {
-            let idx = find(selectedAssets,asset)
+            let idx = selectedAssets.indexOf(asset)
             if let assetIndex = idx
             {
                 selectedAssets.removeAtIndex(assetIndex)
                 sendButton?.setBadgeNumber(selectedAssets.count)
                 if(selectedAssets.count == 0)
                 {
-                    let previewBarButton = self.toolbarItems![0] as! UIBarButtonItem
+                    let previewBarButton = self.toolbarItems![0]
                     previewBarButton.enabled = false
                 }
             }

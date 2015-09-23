@@ -52,7 +52,7 @@ class MimicActionSheet: UIView {
         }
         actionSheet.frame.origin.y = self.frame.size.height
         UIApplication.sharedApplication().keyWindow?.addSubview(actionSheet)
-        let cancelButton = UIButton.buttonWithType(.Custom) as! UIButton
+        let cancelButton = UIButton(type: .Custom)
         cancelButton.frame = CGRectMake(0, cancelBtnYPosition, self.frame.size.width, buttonHeight)
         cancelButton.backgroundColor = UIColor.whiteColor()
         cancelButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -71,7 +71,7 @@ class MimicActionSheet: UIView {
     
     private func createButtonWithTitle(title:String?) -> UIButton?
     {
-        let index = find(buttonsTitles, title!)
+        let index = buttonsTitles.indexOf(title!)
         if let titleIdx = index
         {
             var startYPosition:CGFloat = 0
@@ -82,7 +82,7 @@ class MimicActionSheet: UIView {
                 separatorLine.backgroundColor = actionSheet.backgroundColor
                 actionSheet.addSubview(separatorLine)
             }
-            let albumButton = UIButton.buttonWithType(.Custom) as! UIButton
+            let albumButton = UIButton(type: .Custom)
             albumButton.frame = CGRectMake(0, startYPosition + buttonHeight * CGFloat(titleIdx), actionSheet.frame.size.width, buttonHeight)
             albumButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             albumButton.setTitle(title!, forState: .Normal)
@@ -134,7 +134,7 @@ class MimicActionSheet: UIView {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     /*
     // Only override drawRect: if you perform custom drawing.

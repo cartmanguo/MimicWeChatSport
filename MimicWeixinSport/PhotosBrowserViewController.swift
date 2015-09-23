@@ -15,7 +15,7 @@ protocol PhotoBrowserDelegate
     func selectAssetInBrowser(browser:PhotosBrowserViewController,asset:ALAsset)->Bool
     func deSelectAssetInBrowser(browser:PhotosBrowserViewController,asset:ALAsset)
 }
-class PhotosBrowserViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+class PhotosBrowserViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     var photoAssets:[ALAsset] = []
     var currentIndex:Int?
     var delegate:PhotoBrowserDelegate?
@@ -60,11 +60,11 @@ class PhotosBrowserViewController: UICollectionViewController,UICollectionViewDe
     {
         let xOffset = collectionView?.contentOffset.x
         let index = Int(xOffset!/(view.frame.size.width+20))
-        println("current:\(index)")
+        print("current:\(index)")
         let asset = photoAssets[index]
         if (delegate?.isAssetSelectedInBrowser(self, asset: asset) == true)
         {
-            println("remove")
+            print("remove")
             delegate?.deSelectAssetInBrowser(self, asset: asset)
             sendButton.setBadgeNumber(delegate!.seletedPhotosNumberInPhotoBrowser(self))
             navigationItem.rightBarButtonItem?.image = UIImage(named: "photo_check_default")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -150,6 +150,6 @@ class PhotosBrowserViewController: UICollectionViewController,UICollectionViewDe
     }
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
 }

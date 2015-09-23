@@ -41,7 +41,7 @@ class AlbumsTableViewController: UITableViewController {
     
     func loadAlbums(completionHandler:(albums:[ALAssetsGroup])->())
     {
-        var allAlbums = [ALAssetsGroup]()
+        //var allAlbums = [ALAssetsGroup]()
         assetLib.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: {(group,pointer) in
             if let assetGroup = group
             {
@@ -50,7 +50,7 @@ class AlbumsTableViewController: UITableViewController {
                 //println("\(assetGroup.valueForProperty(ALAssetsGroupPropertyName) as! String)")
             }
             }, failureBlock: {(err) in
-                println("\(err.localizedDescription)")
+                print("\(err.localizedDescription)")
         })
     }
 
@@ -83,7 +83,7 @@ class AlbumsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell?
         if cell == nil
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")

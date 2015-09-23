@@ -35,15 +35,15 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
         self.scrollView.contentSize = CGSizeMake(0, 0);
         self.asset = asset
         let image = UIImage(CGImage: asset.defaultRepresentation().fullScreenImage().takeUnretainedValue())
-        scrollView.contentSize = image!.size
-        fullImageView.frame = CGRectMake(0, 0, image!.size.width, image!.size.height)
+        scrollView.contentSize = image.size
+        fullImageView.frame = CGRectMake(0, 0, image.size.width, image.size.height)
         fullImageView.image = image
         setZoomingFactor()
         setNeedsLayout()
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     func setZoomingFactor()
@@ -61,13 +61,13 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
         fullImageView.frame = CGRectMake(0, 0, fullImageView.frame.size.width,fullImageView.frame.size.height);
         
         // Sizes
-        var boundsSize = self.scrollView.bounds.size;
-        var imageSize = fullImageView.image?.size
+        let boundsSize = self.scrollView.bounds.size;
+        let imageSize = fullImageView.image?.size
         
         // Calculate Min
-        var xScale = boundsSize.width / imageSize!.width
+        let xScale = boundsSize.width / imageSize!.width
         // the scale needed to perfectly fit the image width-wise
-        var yScale = boundsSize.height / imageSize!.height
+        let yScale = boundsSize.height / imageSize!.height
         // the scale needed to perfectly fit the image height-wise
         var minScale = min(xScale, yScale)
         // use minimum of these to allow the image to become fully visible
@@ -108,14 +108,14 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
     {
         var zoomScale = self.scrollView.minimumZoomScale;
         // Zoom image to fill if the aspect ratios are fairly similar
-        var boundsSize = self.scrollView.bounds.size;
-        var imageSize = self.fullImageView.image!.size;
-        var boundsAR = boundsSize.width / boundsSize.height
+        let boundsSize = self.scrollView.bounds.size;
+        let imageSize = self.fullImageView.image!.size;
+        let boundsAR = boundsSize.width / boundsSize.height
         
-        var imageAR = imageSize.width / imageSize.height;
-        var xScale = boundsSize.width / imageSize.width;
+        let imageAR = imageSize.width / imageSize.height;
+        let xScale = boundsSize.width / imageSize.width;
         // the scale needed to perfectly fit the image width-wise
-        var yScale = boundsSize.height / imageSize.height;
+        let yScale = boundsSize.height / imageSize.height;
         // the scale needed to perfectly fit the image height-wise
         // Zooms standard portrait images on a 3.5in screen but not on a 4in screen.
         if (abs(boundsAR - imageAR) < 0.17) {
@@ -131,7 +131,7 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
         return fullImageView
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         scrollView.scrollEnabled = true
     }
     
@@ -142,7 +142,7 @@ class AssetCell: UICollectionViewCell,UIScrollViewDelegate {
     
     override func layoutSubviews()
     {
-        var boundsSize = self.scrollView.bounds.size
+        let boundsSize = self.scrollView.bounds.size
         var frameToCenter = fullImageView.frame
 
         // Horizontally

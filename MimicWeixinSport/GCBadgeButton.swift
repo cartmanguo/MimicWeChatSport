@@ -26,7 +26,7 @@ class GCBadgeButton: UIView {
         badgeLabel?.layer.cornerRadius = badgeLabel!.frame.size.width/2
         badgeLabel?.hidden = true
         containerView?.addSubview(badgeLabel!)
-        button = UIButton.buttonWithType(.Custom) as? UIButton
+        button = UIButton(type: .Custom)
         button?.setTitleColor(UIColor(red: 21/255, green: 160/255, blue: 44/255, alpha: 1.0), forState: .Normal)
         button?.frame = CGRectMake(badgeLabel!.frame.size.width+10, 0, 35, 25)
         button?.setTitle("发送", forState: .Normal)
@@ -71,7 +71,7 @@ class GCBadgeButton: UIView {
             UIView.animateWithDuration(0.2, animations: {() in
                 self.badgeLabel!.transform = CGAffineTransformMakeScale(1.1,1.1)
                 }, completion: {(finished) in
-                    UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: nil, animations: {() in
+                    UIView.animateWithDuration(0.1, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {() in
                         self.badgeLabel?.transform = CGAffineTransformIdentity
                         }, completion: {(finished) in
                     })
@@ -80,6 +80,6 @@ class GCBadgeButton: UIView {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
 }
